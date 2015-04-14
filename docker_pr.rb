@@ -2,10 +2,11 @@
 
 require 'octokit'
 
+# 缓存用户数据，避免重复发起API请求
 $user_cache = Hash.new
-
+# 中国用户登录名列表
 $chinese_user_login_list = ['xiaods', 'hukeping']
-
+# 中国公司邮箱后缀
 $chinese_user_email_domain_list = ['@huawei.com']
 
 # 通过判断用户名和email后缀（能取到email的话）判断是否为中国用户
@@ -16,6 +17,7 @@ def is_chinese?(user)
     return false if user.email.nil?
     # 邮箱后缀判断
     return $chinese_user_email_domain_list.include?("@#{user.email.split('@')[1]}")
+    false
 end
 
 # 通过API取得用户信息并缓存
