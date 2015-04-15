@@ -65,7 +65,7 @@ def pr(repo)
       else
         print "[ ] "
       end
-      puts "#{user.login} ##{pr.number} #{ pr.title} #{ pr.merged_at}"
+      puts "<#{user.login}> #{user.email} ##{pr.number} #{ pr.title} #{ pr.merged_at}"
     end # prs.each
   # end # while has_more
 end
